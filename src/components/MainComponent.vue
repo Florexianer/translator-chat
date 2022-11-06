@@ -44,7 +44,7 @@
       </div>
       <div class="comment">
         <button @click="listen()" style="min-width: 13%; min-height: 40px" class="listenButton">
-          <span class="material-symbols-outlined">
+          <span class="material-symbols-outlined nofill" id="nofitem">
             mic
           </span>
         </button>
@@ -132,13 +132,14 @@ export default {
     listen () {
       const SpeechRecognition =  window.SpeechRecognition || window.webkitSpeechRecognition;
       let recognition = new SpeechRecognition();
+      const item = document.querySelector('#nofitem')
 
       recognition.onstart = () => {
-        console.log("starting listening, speak in microphone");
+        item.classList.remove('nofill')
       }
 
       recognition.onspeechend = () => {
-        console.log("stopped listening");
+        item.classList.add('nofill')
         recognition.stop();
       }
 
@@ -148,7 +149,8 @@ export default {
       }
 
       recognition.onerror = (event) => {
-        alert('Error: ' + event.error + '\n Speech recognition is not working in brave');
+        item.classList.add('nofill')
+        console.error('Error: ' + event.error + '\n Speech recognition is not working in brave');
       }
 
       recognition.start()
@@ -161,6 +163,11 @@ export default {
 
 .play {
   color: black;
+}
+
+.material-symbols-outlined.nofill {
+  font-variation-settings:
+      'FILL' 0
 }
 
 .material-symbols-outlined {
