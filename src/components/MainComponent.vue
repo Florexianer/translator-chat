@@ -33,13 +33,20 @@
           </div>
         </div>
 
-        <span class="material-symbols-outlined" v-if="side === 'l' && show" style="position:relative; left: 0; bottom: 0; display: block; width: 30px;!important;">
-          arrow_forward_ios
-        </span>
-        <span class="material-symbols-outlined" v-if="side === 'r' && show" style="position:relative; left: calc(100% - 15px); bottom: 0; display: block; width: 30px!important;">
-        arrow_back_ios
-      </span>
-        <div id="bottom" style="position:relative; left: 20%; bottom: 0; display: block; min-height: 20px; max-width: 20px">
+
+        <div style="display: flex; position: relative;left: 0; bottom: 0; min-width:100%; padding:0; justify-content: space-between">
+          <div style="position: relative;left: 0">
+            <span class="material-symbols-outlined" v-if="side === 'l' && show" style="width: 30px;!important;">
+            arrow_forward_ios
+          </span>
+          </div>
+          <div id="bottom" style=" bottom: 0; padding: 0; min-height: 45px; max-width: 20px">
+          </div>
+          <div style="position: relative;right: 0">
+            <span class="material-symbols-outlined" v-if="side === 'r' && show" style="width: 30px!important;">
+            arrow_back_ios
+          </span>
+          </div>
         </div>
       </div>
       <div class="comment">
@@ -48,7 +55,6 @@
             mic
           </span>
         </button>
-
         <button @click="side = side === 'l' ? 'r' : 'l'" style="min-width: 13%; min-height: 40px" class="listenButton">
           <span class="material-symbols-outlined">
             autorenew
